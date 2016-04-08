@@ -1,18 +1,18 @@
 package br.sceweb.modelo;
 
 public class Empresa {
-	String cpnj;
+	String CNPJ;
 	String nomeDaEmpresa;
 	String nomeFantasia;
 	String endereco;
 	String telefone;
 	
-	public String getCpnj() {
-		return cpnj;
+	public String getCNPJ() {
+		return CNPJ;
 	}
 	
-	public void setCpnj(String cpnj) {
-		this.cpnj = cpnj;
+	public void setCNPJ(String CNPJ) {
+		this.CNPJ = CNPJ;
 	}
 	
 	public String getNomeDaEmpresa() {
