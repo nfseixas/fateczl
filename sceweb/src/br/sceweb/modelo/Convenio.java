@@ -19,6 +19,7 @@ public class Convenio {
 		setDataTermino(dataTermino);
 	}
 
+
 	public String getCnpj() {
 		return cnpj;
 	}

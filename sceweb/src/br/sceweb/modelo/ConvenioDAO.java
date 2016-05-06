@@ -1,8 +1,34 @@
 package br.sceweb.modelo;
 
+
+import org.apache.log4j.Logger;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import java.sql.SQLException;
+import br.sceweb.servico.FabricaDeConexoes;
+
+
 public class ConvenioDAO {
 
-	public int adiciona(Convenio c){
-		return 1;
+	Logger logger = Logger.getLogger(ConvenioDAO.class);
+
+	public int adiciona(Convenio convenio) {
+		PreparedStatement ps;
+		int codigoRetorno = 0;
+		try (Connection conn =  new FabricaDeConexoes().getConnection()) {
+			ps = (PreparedStatement) conn
+					.prepareStatement("insert into convenio (empresa_cnpj, dataInicio, dataFim) values(?,?,?)");
+			ps.setString(1, convenio.getCnpj());
+			ps.setString(2, convenio.getDataInicio().toString("YYYY‐MM‐dd"));
+			ps.setString(3, convenio.getDataTermino().toString("YYYY‐MM‐dd"));
+			codigoRetorno = ps.executeUpdate();
+			logger.info("codigo de retorno do metodo adiciona convenio = " + codigoRetorno);
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return codigoRetorno;
 	}
 }
