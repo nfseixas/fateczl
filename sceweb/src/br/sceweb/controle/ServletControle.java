@@ -1,7 +1,6 @@
 package br.sceweb.controle;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -83,11 +82,14 @@ public class ServletControle extends HttpServlet {
 					if (empresa != null){
 						logger.info("consulta empresa nome da empresa  = " + empresa.getNomeDaEmpresa());
 						request.setAttribute("nomeDaEmpresa", empresa.getNomeDaEmpresa());
-					    request.setAttribute("cnpj", empresa.getCNPJ());
+					    request.setAttribute("cnpj", empresa.getCnpj());
 					    request.setAttribute("nomeFantasia", empresa.getNomeFantasia());
 					    request.setAttribute("endereco", empresa.getEndereco());
 					    request.setAttribute("telefone", empresa.getTelefone());
-					    
+					    request.setAttribute("responsavel", empresa.getResponsavel());
+					    request.setAttribute("telefoneResponsavel", empresa.getTelefoneResponsavel());
+					    request.setAttribute("setor", empresa.getSetor());
+					    request.setAttribute("email", empresa.getEmail());
 					    request.setAttribute("msg", "");
 						url = "/visao/FormEmpresaResultadoDaConsulta.jsp";
 					} else {
@@ -111,7 +113,7 @@ public class ServletControle extends HttpServlet {
 		Empresa empresa = new Empresa();
 		EmpresaDAO empresaDAO = new EmpresaDAO();
 		try {
-			empresa.setCNPJ(cnpj);
+			empresa.setCnpj(cnpj);
 			empresa.setNomeDaEmpresa(nomeDaEmpresa);
 			empresa.setNomeFantasia(nomeFantasia);
 			empresa.setEndereco(endereco);
