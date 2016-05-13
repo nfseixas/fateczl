@@ -37,26 +37,42 @@ public class UC05CadastrarConvenio {
 		assertEquals(1,convenioDAO.adiciona(convenio));
 	}
 	
+
+	@Test
+	public void CT03UC05A2Cadastrar_convenio_dti_invalida(){
+		assertFalse(convenio.validaData("42/05/2016"));
+	}
+	
+	
+	@Test
+	public void CT06UC05A3Cadastrar_convenio_cnpj_nao_cadastrado(){
+		novoConvenio = new Convenio("95702253000113", "04/05/2016", "19/05/2016");
+		assertEquals(0, convenioDAO.adiciona(novoConvenio));		
+	}
+	
+	
+	
+	/*
 	@Test(expected=IllegalArgumentException.class)
 	public void CT06UC05A3CadastrarConvenio_cnpj_invalido() {
 		cnpj = "11111";
 		convenio.setCNPJ(cnpj);
 	}
-	@Test
-	public void CT03UC05A2Cadastrar_convenio_dti_invalida(){
-		assertFalse(convenio.validaData("42/05/2016"));
-	}
+	
+	
 	@Test
 	public void CT02UC05A1Cadastrar_convenio_ja_cadastrado(){
 		DateTime di = new DateTime(2016, 4, 5, 0, 0);
 		DateTime df = new DateTime(2016, 5, 1, 0, 0);
 		assertEquals (4, convenio.convenioJaCadastrado(df,di));
-	}
+	}*/
 
 	@
 	AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		convenioDAO.exclui("81965361000174");
+		convenioDAO.exclui("95702253000113");
+
 		empresaDAO.exclui("81965361000174");
 	}
 }
