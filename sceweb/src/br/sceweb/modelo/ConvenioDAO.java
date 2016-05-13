@@ -11,6 +11,12 @@ import br.sceweb.servico.FabricaDeConexoes;
 
 public class ConvenioDAO {
 	Logger logger = Logger.getLogger(ConvenioDAO.class);
+	
+	/**
+	 *  Método para se adicionar um convenio de uma empresa
+	 * @param convenio
+	 * @return codigoRetorno
+	 */
 	public int adiciona(Convenio convenio){
 		PreparedStatement ps;
 		int codigoRetorno=0;
@@ -29,6 +35,11 @@ public class ConvenioDAO {
 			}
 		return codigoRetorno;
 	}
+	/**
+	 * método para se excluir um convenio de uma emprea
+	 * @param cnpj
+	 * @return codigoRetorno
+	 */
 	public int exclui (String cnpj) {
 		java.sql.PreparedStatement ps;
 		int codigoretorno = 0;
