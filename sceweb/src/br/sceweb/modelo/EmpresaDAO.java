@@ -12,12 +12,6 @@ import br.sceweb.servico.FabricaDeConexoes;
 
 public class EmpresaDAO {
 	Logger logger = Logger.getLogger(EmpresaDAO.class);
-	
-	/**
-	 * Método para se adicionar uma nova empresa
-	 * @param empresa
-	 * @return codigoRetorno
-	 */
 	public int adiciona(Empresa empresa){
 		PreparedStatement ps;
 		int codigoRetorno=0;
@@ -40,12 +34,6 @@ public class EmpresaDAO {
 		return codigoRetorno;
 	}
 	
-
-	/**
-	 * Método para excluir uma empresa
-	 * @param cnpj
-	 * @return codigoRetorno
-	 */
 	public int exclui (String cnpj) {
 		java.sql.PreparedStatement ps;
 		int codigoretorno = 0;
@@ -61,12 +49,6 @@ public class EmpresaDAO {
 	
 	}
 	
-	
-	/**
-	 * Meetodo para se pesquisar uma empresa
-	 * @param cnpj
-	 * @return um objeto populado empresa
-	 */
 	public static Empresa consultaEmpresa(String cnpj) {
 		Empresa empresa = null;
 		java.sql.PreparedStatement ps;
